@@ -17,4 +17,5 @@ export const badgeList = [
     new Badge("pupddown"),
     new Badge("pdowndup"),
     new Badge("fireshield"),
+    new Badge("sushi"),
 ];

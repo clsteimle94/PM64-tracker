@@ -39,6 +39,7 @@ export default {
             physblock: 7,
             isLastStand: false,
             fireShield: 0,
+            waterBlock: 0,
         }
     },
 
@@ -80,20 +81,34 @@ export default {
                 else this.fireShield = 0;
             }
 
-            // compute damages
-            if(this.isLastStand){
-                this.fire = Math.floor((10 - this.def - this.fireShield) / 2);
-                this.fireblock = Math.floor((10 - this.def - this.blockdef - this.fireShield) / 2);
-                this.phys = Math.floor((8 - this.def) / 2);
-                this.physblock = Math.floor((8 - this.def - this.blockdef) / 2);
-            }
-            else {
-                this.fire = 10 - this.def - this.fireShield;
-                this.fireblock = 10 - this.def - this.blockdef - this.fireShield;
-                this.phys = 8 - this.def;
-                this.physblock = 8 - this.def - this.blockdef;
+            // sushi water block?
+            else if(badge.id == "sushi") {
+                if(badge.state) {
+                    this.waterBlock = 1;
+                    this.def++;
+                }
+                else {
+                    this.waterBlock = 0;
+                    this.def--;
+                }
             }
 
+            // compute damages
+            let ttlBlockDef = this.def + this.blockdef;
+            let ttlFireBonus = this.fireShield + this.waterBlock;
+
+            if(this.isLastStand){
+                this.fire = Math.floor((10 - this.def - ttlFireBonus) / 2);
+                this.fireblock = Math.floor((10 - ttlBlockDef - ttlFireBonus) / 2);
+                this.phys = Math.floor((8 - this.def) / 2);
+                this.physblock = Math.floor((8 - ttlBlockDef) / 2);
+            }
+            else {
+                this.fire = 10 - this.def - ttlFireBonus;
+                this.fireblock = 10 - ttlBlockDef - ttlFireBonus;
+                this.phys = 8 - this.def;
+                this.physblock = 8 - ttlBlockDef;
+            }
         },
     },
 };
@@ -104,7 +119,7 @@ export default {
 .badge-container {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(7, 32px);
+    grid-template-columns: repeat(8, 32px);
     grid-template-rows: 28px;
     padding: 4px;
 }
