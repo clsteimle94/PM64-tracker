@@ -1,39 +1,5 @@
 <template>
     <div id="app">
-        <nav>
-            <div class="save-container">
-                <button
-                    @click.prevent="localSave()"
-                    id="saveBtn"
-                    class="savebutton"
-                >
-                    Save
-                </button>
-                <button
-                    @click.prevent="localLoad()"
-                    id="loadBtn"
-                    class="loadbutton"
-                >
-                    Load
-                </button>
-
-                <button
-                    @click.prevent="downloadSave()"
-                    id="saveFile"
-                    class="downloadbutton"
-                >
-                    Download Save
-                </button>
-
-                <input
-                    ref="fileInput"
-                    @change.prevent="uploadSave()"
-                    id="fileToLoad"
-                    class="loadedfile"
-                    type="file"
-                />
-            </div>
-        </nav>
 
         <div id="tracker" class="tracker-container">
             <div id="collectables" class="collectables-container">
@@ -48,6 +14,88 @@
                 <div id="partners" class="partner-container">
                     <Item
                         v-for="item in trackerState.partners"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch1" class="ch1-container">
+                    <Item
+                        v-for="item in trackerState.ch1"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                    <CountableItem 
+                        v-for="item in trackerState.ch1Countables"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch2" class="ch2-container">
+                    <Item
+                        v-for="item in trackerState.ch2"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                    <CountableItem 
+                        v-for="item in trackerState.ch2Countables"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch3" class="ch3-container">
+                    <Item
+                        v-for="item in trackerState.ch3"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                    <CountableItem 
+                        v-for="item in trackerState.ch3Countables"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch4" class="ch4-container">
+                    <Item
+                        v-for="item in trackerState.ch4"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch5" class="ch5-container">
+                    <Item
+                        v-for="item in trackerState.ch5"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch6" class="ch6-container">
+                    <Item
+                        v-for="item in trackerState.ch6"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="ch7" class="ch7-container">
+                    <Item
+                        v-for="item in trackerState.ch7"
+                        :key="item.id"
+                        :item="item"
+                        @itemEv="fetchData($event)"
+                    />
+                </div>
+                <div id="misc" class="misc-container">
+                    <Item
+                        v-for="item in trackerState.misc"
                         :key="item.id"
                         :item="item"
                         @itemEv="fetchData($event)"
@@ -70,17 +118,18 @@
             <div id="logic" class="logic-container">
                 <div>Chapter 1</div>
                 <div id="ch1Check" class="logicCheck">No</div>
-            </div>
-
-            <div id="blankspace"></div>
-
-            <div id="countables" class="countables-container">
-                <CountableItem
-                        v-for="item in trackerState.countables"
-                        :key="item.id"
-                        :item="item"
-                        @itemEv="fetchData($event)"
-                    />
+                <div>Chapter 2</div>
+                <div id="ch2Check" class="logicCheck">No</div>
+                <div>Chapter 3</div>
+                <div id="ch3Check" class="logicCheck">No</div>
+                <div>Chapter 4</div>
+                <div id="ch4Check" class="logicCheck">No</div>
+                <div>Chapter 5</div>
+                <div id="ch5Check" class="logicCheck">No</div>
+                <div>Chapter 6</div>
+                <div id="ch6Check" class="logicCheck">No</div>
+                <div>Chapter 7</div>
+                <div id="ch7Check" class="logicCheck">No</div>
             </div>
 
         </div>
@@ -92,7 +141,7 @@ import Counter from "./components/Counter.vue";
 import Item from "./components/Item.vue";
 import CountableItem from "./components/CountableItem.vue"
 import { trackerContent } from "./items";
-import { updateLogic, updateItem, updateMap } from "./logic";
+import { updateLogic, updateItem } from "./logic";
 import "./app.css";
 
 export default {
@@ -111,70 +160,6 @@ export default {
     },
 
     methods: {
-        /**
-         * @param {string} content
-         * @param {string} fileName
-         * @param {string} contentType
-         */
-        download(content, fileName, contentType) {
-            const a = document.createElement("a");
-            const file = new Blob([content], { type: contentType });
-
-            a.href = URL.createObjectURL(file);
-            a.download = fileName;
-            a.click();
-        },
-
-        downloadSave() {
-            this.download(
-                this.stateToJson(),
-                "trackerBaseSave.json",
-                "application/json"
-            );
-        },
-
-        localLoad() {
-            this.jsonToState(localStorage.getItem("trackerBaseSave"));
-        },
-
-        localSave() {
-            localStorage.setItem("trackerBaseSave", this.stateToJson());
-        },
-
-        uploadSave() {
-            const file = this.$refs.fileInput.files[0];
-
-            if (file != null) {
-                const fileReader = new FileReader();
-
-                fileReader.onload = (e) => {
-                    const textFromFileLoaded = e.target.result;
-
-                    this.jsonToState(textFromFileLoaded);
-                };
-
-                fileReader.readAsText(file, "UTF-8");
-                this.$refs.fileInput.value = null;
-            }
-        },
-
-        /** Loading
-         * @param {string} json
-         */
-        jsonToState(json) {
-            this.trackerState = JSON.parse(json);
-            updateMap(this.trackerState);
-            updateLogic();
-        },
-
-        /** Saving
-         * @return {string}
-         */
-        stateToJson() {
-            return JSON.stringify(this.trackerState, null, 4);
-        },
-
-
         fetchData(data) {
             updateItem(data);
             updateLogic();

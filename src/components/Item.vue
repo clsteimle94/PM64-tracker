@@ -9,14 +9,10 @@
 </template>
 
 <script>
-/**
- * @typedef {import('./../items').Item} Item
- */
 export default {
     name: "Item",
 
     props: {
-        /** @type {{ new (): Item }} */
         item: {
             type: Object,
             required: true,
@@ -24,9 +20,6 @@ export default {
     },
 
     computed: {
-        /**
-         * @returns {string}
-         */
         pic() {
             if (this.item.state <= 1) {
                 return this.item.pics[0];
@@ -37,9 +30,6 @@ export default {
     },
 
     methods: {
-        /**
-         * @param {boolean} isRightClick
-         */
         toggle(isRightClick = false) {
             let state = this.item.state + (isRightClick ? -1 : 1);
 

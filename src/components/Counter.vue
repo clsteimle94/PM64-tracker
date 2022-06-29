@@ -16,7 +16,6 @@ export default {
     name: "Counter",
 
     props: {
-        /** @type {{ new (): Counter }} */
         counter: {
             type: Object,
             required: true,
@@ -31,7 +30,7 @@ export default {
     computed: {
         countColor() {
             if (this.counter.state >= this.counter.max)
-                return "PaleGreen";
+                return "DarkGreen";
             else if (this.counter.state <= 0)
                 return "#808080";
             return "black";

@@ -1,4 +1,4 @@
-# item-tracker-base
+# PM64-Tracker
 
 ## Project setup
 ```

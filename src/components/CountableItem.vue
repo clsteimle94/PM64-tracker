@@ -37,7 +37,7 @@ export default {
     computed: {
         countColor() {
             if (this.item.state >= this.item.max)
-                return "PaleGreen";
+                return "DarkGreen";
             else if (this.item.state <= 0)
                 return "#808080";
             return "black";
