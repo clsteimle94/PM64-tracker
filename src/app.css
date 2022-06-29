@@ -1,0 +1,192 @@
+/* custom font */
+@font-face {
+    font-family: "PM Font";
+    src: url("./assets/font/pmdialog.ttf");
+}
+
+
+html {
+    height: 100%;
+}
+
+
+body {
+    background: linear-gradient(
+            rgba(34, 34, 34, 0.9),
+            rgba(15, 15, 15, 0.9)
+        ),
+        black url(./assets/pic/bg.png) repeat;
+
+    color: black;
+    font-family: Calibri;
+    font-size: 14px;
+
+    margin: 0;
+}
+
+
+.tracker-container {
+    background: linear-gradient(
+            rgba(132, 255, 116, 0.4), 
+            rgba(0, 66, 3, 0.4)
+        ),
+        black url(./assets/pic/bg.png) repeat;
+
+    font-family: PM Font, Calibri; /* custom font */
+    font-size: 18px;
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 320px;
+    grid-template-rows: 84px 20px 44px 20px 44px 20px 44px;
+
+    padding: 12px;
+    margin: 0;
+    border-radius: 8px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:0;
+}
+
+
+.collectables-container {
+    background: linear-gradient(
+            rgba(142, 223, 255, 0.4),
+            rgba(24, 78, 114, 0.4)
+        ),
+        black url(./assets/pic/bg.png) repeat;
+
+    border: 2px solid rgba(95, 95, 95, 0.7);
+    border-radius: 8px;
+}
+
+
+.upgrade-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 32px);
+    grid-auto-rows: 32px;
+
+    padding: 4px;
+}
+
+
+.partner-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(8, 32px);
+    grid-auto-rows: 32px; 
+
+    padding: 4px;
+}
+
+
+.counter-container {
+    background: linear-gradient(
+            rgba(142, 223, 255, 0.4),
+            rgba(24, 78, 114, 0.4)
+        ),
+        black url(./assets/pic/bg.png) repeat;
+
+    line-height: 30px;
+    text-align: center;
+    user-select: none;
+
+    display: grid;
+    justify-content: left;
+    grid-template-columns: 220px 80px;
+    grid-auto-rows: 32px;
+
+    padding: 4px;
+    border: 2px solid rgba(95, 95, 95, 0.7);
+    border-radius: 8px;
+}
+
+
+.logic-container {
+    background: linear-gradient(
+            rgba(142, 223, 255, 0.4),
+            rgba(24, 78, 114, 0.4)
+        ),
+        black url(./assets/pic/bg.png) repeat;
+
+    line-height: 30px;
+    text-align: center;
+    user-select: none;
+
+    display: grid;
+    justify-content: left;
+    grid-template-columns: 240px 32px;
+    grid-auto-rows: 32px;
+
+    padding: 4px;
+    border: 2px solid rgba(95, 95, 95, 0.7);
+    border-radius: 8px;
+}
+
+
+.countables-container {
+    background: linear-gradient(
+            rgba(142, 223, 255, 0.4),
+            rgba(24, 78, 114, 0.4)
+        ),
+        black url(./assets/pic/bg.png) repeat;
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 100px 100px;
+    grid-auto-rows: 32px;
+
+    padding: 4px;
+    border: 2px solid rgba(95, 95, 95, 0.7);
+    border-radius: 8px;
+}
+
+
+.save-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 32px;
+
+    width: 500px;
+    padding: 4px;
+    margin: 0 auto;
+}
+
+
+button {
+    color: white;
+    font-family: Calibri;
+    font-size: 14px;
+    text-align: center;
+    user-select: none;
+
+    background-color: rgb(37, 37, 37);
+    border: 1px solid rgba(58, 58, 58, 0.9);
+
+    cursor: pointer;
+}
+button:focus {
+    outline: none;
+}
+
+
+.loadedfile::before {
+    content: 'Upload Save';
+    display: inline-block;
+
+    color: white;
+    font-family: Calibri;
+    font-size: 14px;
+    text-align: center;
+
+    background-color: rgb(37, 37, 37);
+    border: 1px solid rgba(58, 58, 58, 0.9);
+    padding: 6px 28px;
+
+    cursor: pointer;
+}
