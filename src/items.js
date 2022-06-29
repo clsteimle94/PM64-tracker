@@ -2,10 +2,10 @@ const iconDir = "./assets/pic/PM64icons/";
 
 class SingleItem {
     constructor(id) {
-      this.id = id;
-      this.itemPool = 1;
-      this.state = 0;
-      this.pics =  [require(iconDir+id+".png")];
+        this.id = id;
+        this.itemPool = 1;
+        this.state = 0;
+        this.pics =  [require(iconDir+id+".png")];
     }
 }
 

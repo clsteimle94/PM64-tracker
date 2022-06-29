@@ -26,12 +26,6 @@
                         :item="item"
                         @itemEv="fetchData($event)"
                     />
-                    <CountableItem 
-                        v-for="item in trackerState.ch1Countables"
-                        :key="item.id"
-                        :item="item"
-                        @itemEv="fetchData($event)"
-                    />
                 </div>
                 <div id="ch2" class="ch2-container">
                     <Item
@@ -40,22 +34,10 @@
                         :item="item"
                         @itemEv="fetchData($event)"
                     />
-                    <CountableItem 
-                        v-for="item in trackerState.ch2Countables"
-                        :key="item.id"
-                        :item="item"
-                        @itemEv="fetchData($event)"
-                    />
                 </div>
                 <div id="ch3" class="ch3-container">
                     <Item
                         v-for="item in trackerState.ch3"
-                        :key="item.id"
-                        :item="item"
-                        @itemEv="fetchData($event)"
-                    />
-                    <CountableItem 
-                        v-for="item in trackerState.ch3Countables"
                         :key="item.id"
                         :item="item"
                         @itemEv="fetchData($event)"
@@ -103,8 +85,6 @@
                 </div>
             </div>
 
-            <div id="blankspace"></div>
-
             <div id="counters" class="counter-container">
                 <div>Counter: </div>
                 <Counter 
@@ -112,8 +92,6 @@
                     @counterEv="fetchData($event)"
                 />
             </div>
-
-            <div id="blankspace"></div>
 
             <div id="logic" class="logic-container">
                 <div>Chapter 1</div>
@@ -132,6 +110,10 @@
                 <div id="ch7Check" class="logicCheck">No</div>
             </div>
 
+            <div id="defense" class="defense-container">
+                <DefenseTracker/>
+            </div>
+
         </div>
     </div>
 </template>
@@ -139,7 +121,7 @@
 <script>
 import Counter from "./components/Counter.vue";
 import Item from "./components/Item.vue";
-import CountableItem from "./components/CountableItem.vue"
+import DefenseTracker from "./components/DefenseTracker.vue"
 import { trackerContent } from "./items";
 import { updateLogic, updateItem } from "./logic";
 import "./app.css";
@@ -150,7 +132,7 @@ export default {
     components: {
         Counter,
         Item,
-        CountableItem,
+        DefenseTracker,
     },
 
     data() {
@@ -165,7 +147,12 @@ export default {
             updateLogic();
         },
     },
+
+    mounted() {
+        updateLogic();
+    },
 };
+
 </script>
 
 <style scoped>
