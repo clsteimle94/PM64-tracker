@@ -65,8 +65,13 @@ div {
         rgba(94, 94, 94, 0.3)
     );
 
+    height: 100%;
+    width: 100%;
+    line-height: 26px;
+
     border-radius: 8px;
     border: 2px solid rgba(95, 95, 95, 0.7);
+
     user-select: none;
     cursor: pointer;
 }

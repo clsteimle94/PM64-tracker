@@ -11,11 +11,10 @@ html {
 
 
 body {
-    background: linear-gradient(
-            rgba(34, 34, 34, 0.9),
-            rgba(15, 15, 15, 0.9)
-        ),
-        black url(./assets/pic/bg.png) repeat;
+    background: black;
+    background-image: url(./assets/pic/toadtown.png);
+    background-position: top;
+    background-repeat: no-repeat;
 
     color: black;
     font-family: Calibri;
@@ -26,14 +25,7 @@ body {
 
 
 .tracker-container {
-    background: linear-gradient(
-            rgba(132, 255, 116, 0.4), 
-            rgba(0, 66, 3, 0.4)
-        ),
-        black url(./assets/pic/bg.png) repeat;
-
     font-family: PM Font, Calibri; /* custom font */
-    font-size: 14px;
 
     display: grid;
     justify-content: center;
@@ -55,8 +47,8 @@ body {
 
 .collectables-container {
     background: linear-gradient(
-            rgba(142, 223, 255, 0.4),
-            rgba(24, 78, 114, 0.4)
+            rgba(255, 255, 255, 0.0),
+            rgba(255, 255, 255, 0.0)
         ),
         black url(./assets/pic/bg.png) repeat;
     
@@ -71,170 +63,87 @@ body {
 }
 
 
-.upgrade-container {
+.item-container {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3, 32px);
-    grid-auto-rows: 32px;
-
-    padding: 4px;
-}
-
-
-.partner-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(8, 32px);
+    grid-template-columns: repeat(9, 32px);
     grid-auto-rows: 32px; 
-
+    border-bottom: 2px solid rgba(95, 95, 95, 0.2);
     padding: 4px;
 }
-
-.ch1-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-}
-
-.ch2-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-}
-
-.ch3-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-	text-align: center;
-}
-
-.ch4-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-}
-
-.ch5-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-}
-
-.ch6-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-}
-
-.ch7-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px;
-    padding: 4px;
-}
-
-.misc-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(9, 32px);
-    grid-template-rows: 32px 32px 32px;
-    padding: 4px;
+.item-container:last-child {
+    border: none;
 }
 
 
-.counter-container {
+#upgrades {
+    grid-template-columns: repeat(3, 32px);
+    border: none;
+}
+
+#partners {
+    grid-template-columns: repeat(8, 32px);
+}
+
+
+#ch1 {
+    background: rgba(132, 231, 137, 0.2);
+}
+#ch2 {
+    background: rgba(255, 187, 69, 0.2);
+}
+#ch3 {
+    background: rgba(169, 116, 255, 0.2);
+}
+#ch4 {
+    background: rgba(255, 113, 238, 0.2);
+}
+#ch5 {
+    background: rgba(255, 104, 104, 0.2);
+}
+#ch6 {
+    background: rgba(255, 246, 81, 0.2);
+}
+#ch7 {
+    background: rgba(78, 187, 255, 0.2);
+}
+
+
+.text-container {
     background: linear-gradient(
             rgba(142, 223, 255, 0.4),
             rgba(24, 78, 114, 0.4)
         ),
         black url(./assets/pic/bg.png) repeat;
 
+    display: grid;
+    justify-content: left;
+
+    line-height: 30px;
+    text-align: center;
+    user-select: none;
+
+    padding: 4px;
+    border: 2px solid rgba(95, 95, 95, 0.7);
+    border-radius: 8px;
+
+    grid-template-columns: 220px 80px;
+    grid-auto-rows: 22px;
+}
+
+#counters {
     grid-row-start: 1;
     grid-row-end: 1;
 
     grid-column-start: 2;
     grid-column-end: 2;
-    
-    line-height: 30px;
-    text-align: center;
-    user-select: none;
-
-    display: grid;
-    justify-content: left;
-    grid-template-columns: 220px 80px;
-    grid-auto-rows: 32px;
-
-    padding: 4px;
-    border: 2px solid rgba(95, 95, 95, 0.7);
-    border-radius: 8px;
 }
 
 
-.logic-container {
-    background: linear-gradient(
-            rgba(142, 223, 255, 0.4),
-            rgba(24, 78, 114, 0.4)
-        ),
-        black url(./assets/pic/bg.png) repeat;
-
+#logic {
     grid-row-start: 2;
     grid-row-end: 2;
 
     grid-column-start: 2;
     grid-column-end: 2;
-
-    line-height: 30px;
-    text-align: center;
-    user-select: none;
-
-    display: grid;
-    justify-content: left;
-    grid-template-columns: 240px 32px;
-    grid-auto-rows: 22px;
-
-    padding: 4px;
-    border: 2px solid rgba(95, 95, 95, 0.7);
-    border-radius: 8px;
-}
-
-
-.defense-container {
-    background: linear-gradient(
-            rgba(142, 223, 255, 0.4),
-            rgba(24, 78, 114, 0.4)
-        ),
-        black url(./assets/pic/bg.png) repeat;
-
-    grid-row-start: 3;
-    grid-row-end: 3;
-
-    grid-column-start: 2;
-    grid-column-end: 2;
-
-    line-height: 22px;
-    text-align: center;
-    user-select: none;
-
-    display: grid;
-    justify-content: left;
-    grid-template-columns: 320px;
-    grid-auto-rows: 22px;
-
-    padding: 4px;
-    border: 2px solid rgba(95, 95, 95, 0.7);
-    border-radius: 8px;
 }
